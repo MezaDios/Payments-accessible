@@ -1,0 +1,124 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class=" col col-12 card">
+            <div class="card-body">
+                <form class="card-body" [formGroup]="form" (ngSubmit)="form.valid">
+                    <div class="card-header mb-2">
+                        <h1>Select type</h1>
+                    </div>
+                    <div class="card-body">
+                        <p>Select one filter: </p>
+                        <div class="form-group">
+                            <select formControlName="type" class="form-control" required
+                                [ngClass]="{'is-invalid':form.get('type').touched && form.get('type').invalid}">
+                                <option value="1">By User</option>
+                                <option value="2">By date</option>
+                            </select>
+                        </div>
+                        <div *ngIf="form.get('type').touched && form.get('type').invalid" class="invalid-feedback">
+                            <div>You must have select one</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" *ngIf="user">
+    <div class="row">
+        <div class=" col col-12 card">
+            <div class="card-body">
+                <form class="card-body" [formGroup]="formUser" (ngSubmit)="formUser.valid && getByUser()">
+                    <div class="card-header mb-2">
+                        <h1>Select user</h1>
+                    </div>
+                    <div class="card-body">
+                        <p>Select one user: </p>
+                        <div class="form-group">
+                            <select formControlName="user" class="form-control" required
+                                [ngClass]="{'is-invalid':formUser.get('user').touched && formUser.get('user').invalid}">
+                                <option *ngFor="let debtor of debtors" value="{{debtor.id}}">
+                                    {{ debtor.id }} -
+                                    {{ debtor.name }} -
+                                    {{ debtor.telephone }}
+                                </option>
+                            </select>
+                        </div>
+                        <div *ngIf="formUser.get('user').touched && formUser.get('user').invalid"
+                            class="invalid-feedback">
+                            <div>You must have select one</div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button [disabled]="!formUser.valid" type="submit" class="btn btn-primary">
+                            Buscar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" *ngIf="date">
+    <div class="row">
+        <div class=" col col-12 card">
+            <div class="card-body">
+                <form class="card-body" [formGroup]="formDate" (ngSubmit)="formDate.valid && getByDate()">
+                    <div class="card-header mb-2">
+                        <h1>Select the dates</h1>
+                    </div>
+                    <div class="card-body">
+                        <p>Start date: </p>
+                        <div class="form-group">
+                            <input type="date" formControlName="startDate" class="form-control"
+                                [ngClass]="{'is-invalid':formDate.get('startDate').touched && formDate.get('startDate').invalid}"
+                                required />
+                        </div>
+                        <div class="invalid-feedback">
+                            <div>Start date is required</div>
+                        </div>
+
+                        <p>End date: </p>
+                        <div class="form-group">
+                            <input type="date" formControlName="endDate" class="form-control"
+                                [ngClass]="{'is-invalid':formDate.get('endDate').touched && formDate.get('endDate').invalid}"
+                                required />
+                        </div>
+                        <div class="invalid-feedback">
+                            <div>End date is required</div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button [disabled]="!formDate.valid" type="submit" class="btn btn-primary">
+                            Buscar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container-fluid" *ngIf="user || date">
+    <div class="row">
+        <div class=" col col-12 card">
+            <div class="card-body">
+                <h5 class="card-title">Debts: </h5>
+                <p *ngFor="let debt of foundDebts">
+                    User: {{debt.name}} -
+                    telephone: {{ debt.telephone }} -
+                    Debt: {{ debt.id }} -
+                    Concept: {{ debt.concept }} -
+                    Amount: $ {{ debt.amount }} -
+                    Date: {{ debt.creationDate }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

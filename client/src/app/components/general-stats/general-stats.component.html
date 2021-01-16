@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class=" col col-12 card">
+      <div class="card-body">
+        <h5 class="card-title">Total Due: </h5>
+        <p class="card-text">
+          $ {{ totalDue }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class=" col col-12 card">
+      <div class="card-body">
+        <h5 class="card-title">Total paid: </h5>
+        <p class="card-text">
+          $ {{ totalPaid }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class=" col col-12 card">
+      <div class="card-body">
+        <h5 class="card-title">Current debts: </h5>
+        <p *ngFor="let debtor of debtors" class="card-text">
+          <span *ngIf="!isNull(debtor.totalDue)">User: {{ debtor.id }} -
+            Name: {{ debtor.name }} -
+            Due: $ {{ debtor.totalDue }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class=" col col-12 card">
+      <div class="card-body">
+        <h5 class="card-title">Payments made: </h5>
+        <span *ngFor="let debtor of debtors">
+          <p *ngFor="let payment of debtor.payments" class="card-text">
+            <span *ngIf="!isNull(payment.amount)">
+              User: {{ debtor.name }} -
+              Payment: {{ payment.id }} -
+              Date: {{ payment.paymentDate }} -
+              Amount: $ {{ payment.amount }}</span>
+          </p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

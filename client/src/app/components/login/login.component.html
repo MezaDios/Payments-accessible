@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="">
+        <h2 style="color: white">Debt Status</h2>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-4">
+            <div class="card login">
+                <div class="card-header text-primary">
+                    Welcome
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="form.valid && login()">
+
+                        <div class="form-group">
+                            <input formControlName="telephone" type="tel" minlength="10" maxlength="10" name="telephone"
+                                placeholder="Phone Number" class="form-control" autofocus
+                                [ngClass]="{'is-invalid':form.get('telephone').touched && form.get('telephone').invalid}"
+                                required />
+                        </div>
+                        <div class="invalid-feedback">
+                            <div>Telephone is required</div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" formControlName="password" placeholder="Password"
+                                class="form-control"
+                                [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}"
+                                required />
+                        </div>
+                        <div class="invalid-feedback">
+                            <div>Telephone is required</div>
+                        </div>
+
+                        <button [disabled]="!form.valid" type="submit" class="btn btn-success btn-block">
+                            Login
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

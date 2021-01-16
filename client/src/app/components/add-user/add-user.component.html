@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+
+<div class="col-12 text-center">
+  <div class="card shadow">
+    <form class="card-body" [formGroup]="form" (ngSubmit)="form.valid && addUser()">
+      <div class="card-header mb-2">
+        <h1>Add user</h1>
+      </div>
+      <div class="card-body">
+
+        <div class="form-group">
+          <input type="text" formControlName="name" class="form-control" placeholder="Name"
+            [ngClass]="{'is-invalid':form.get('name').touched && form.get('name').invalid}" required />
+        </div>
+        <div class="invalid-feedback">
+          <div>Name is required</div>
+        </div>
+
+        <div class="form-group">
+          <input type="text" formControlName="surname" class="form-control" placeholder="Surname"
+            [ngClass]="{'is-invalid':form.get('surname').touched && form.get('surname').invalid}" required />
+        </div>
+        <div class="invalid-feedback">
+          <div>Surname is required</div>
+        </div>
+
+        <div class="form-group">
+          <input type="text" formControlName="secondSurname" class="form-control" placeholder="Second surname" />
+        </div>
+
+        <div class="form-group">
+          <input type="text" formControlName="telephone" class="form-control"
+            [ngClass]="{'is-invalid':form.get('telephone').touched && form.get('telephone').invalid}" required
+            placeholder="Telephone" required />
+        </div>
+        <div *ngIf="form.get('telephone').touched && form.get('telephone').invalid" class="invalid-feedback">
+          <div *ngIf="form.get('telephone').errors.required">Telephone is required</div>
+          <div *ngIf="form.get('telephone').errors.minlength">Telephone must have at least 7 characters</div>
+          <div *ngIf="form.get('telephone').errors.maxlength">Telephone mustn't have above 10 characters</div>
+        </div>
+
+        <div class="form-group">
+          <input type="email" formControlName="email" class="form-control" placeholder="Email"
+            [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}" required />
+        </div>
+        <div *ngIf="form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
+          <div *ngIf="form.get('email').errors.required">Email Name is required</div>
+          <div *ngIf="form.get('email').errors.email">Email must be a valid email Address</div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" formControlName="password" class="form-control" placeholder="password" required
+            [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}" />
+        </div>
+        <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
+          <div *ngIf="form.get('password').errors.required">Password is required</div>
+          <div *ngIf="form.get('password').errors.minlength">Password must have at least 6 characters</div>
+        </div>
+
+        <p>User type: </p>
+        <div class="form-group">
+          <select formControlName="userType" class="form-control" required
+            [ngClass]="{'is-invalid':form.get('userType').touched && form.get('userType').invalid}">
+            <option value="1">Administrator</option>
+            <option value="2">Debtor</option>
+          </select>
+        </div>
+        <div *ngIf="form.get('userType').touched && form.get('userType').invalid" class="invalid-feedback">
+          <div>You must have select one</div>
+        </div>
+
+      </div>
+      <div class="card-footer">
+        <button [disabled]="!form.valid" type="submit" class="btn btn-primary">
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

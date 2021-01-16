@@ -1,0 +1,79 @@
+<div class="container-fluid">
+  <div class="row bg-primary text-center">
+    <div class="col"></div>
+    <div class="col">
+      <img src="https://www.abd.es/wp-content/uploads/2017/12/perfiles-de-usuario.png">
+    </div>
+    <div class="col"></div>
+    <div class="col col-12">
+      <h1 class="text-white">Bienvenido {{ crud.currentUser.name }}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row bg-secundary text-center">
+    <div class="card col col-12">
+      <div class="card-body">
+        <h5 class="card-title">Total due: </h5>
+        <p class="card-text">
+          $ {{ totalDue }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row bg-secundary text-center">
+    <div class="card col col-12">
+      <div class="card-body">
+        <h5 class="card-title">Payments: </h5>
+        <table class=" table-responsive table-bordered table-stripped" style="width: 100%;">
+          <thead style="width: 100%" class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody style="width: 100%">
+            <tr style="width: 100%" *ngFor="let payment of payments">
+              <th style="width: 33%" scope="row">{{ payment.id }}</th>
+              <td style="width: 40%">${{ payment.amount }}</td>
+              <td style="width: 40%">{{ payment.paymentDate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row bg-secundary text-center">
+    <div class="card col col-12">
+      <div class="card-body">
+        <h5 class="card-title">Debts: </h5>
+        <table class=" table-responsive table-bordered table-stripped" style="width: 100%;">
+          <thead style="width: 100%" class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Concept</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody style="width: 100%">
+            <tr style="width: 100%" *ngFor="let debt of debts">
+              <th style="width: 25%" scope="row">{{ debt.id }}</th>
+              <td style="width: 25%">{{ debt.concept }}</td>
+              <td style="width: 25%">${{ debt.amount }}</td>
+              <td style="width: 25%">{{ debt.creationDate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+
+<div class="col-12 text-center">
+  <div class="card shadow">
+    <form class="card-body" [formGroup]="form" (ngSubmit)="form.valid && addPayment()">
+      <div class="card-header mb-2">
+        <h1>Add payment</h1>
+      </div>
+      <div class="card-body">
+
+        <div class="form-group">
+          <input type="number" formControlName="amount" class="form-control" placeholder="$ Amount"
+            [ngClass]="{'is-invalid':form.get('amount').touched && form.get('amount').invalid}" required />
+        </div>
+        <div class="invalid-feedback">
+          <div>Amount is required</div>
+        </div>
+
+        <p>User: </p>
+        <div class="form-group">
+          <select formControlName="user" class="form-control" required aria-placeholder="Users"
+            [ngClass]="{'is-invalid':form.get('user').touched && form.get('user').invalid}">
+            <option *ngFor="let debtor of debtors" value="{{debtor.id}}"> {{ debtor.name }} </option>
+          </select>
+        </div>
+        <div *ngIf="form.get('user').touched && form.get('user').invalid" class="invalid-feedback">
+          <div>You must have select one</div>
+        </div>
+
+        <p>Debt</p>
+        <div class="form-group">
+          <select formControlName="debt" class="form-control" required aria-placeholder="Debts"
+            [ngClass]="{'is-invalid':form.get('debt').touched && form.get('debt').invalid}">
+            <option *ngFor="let debt of debts" value="{{debt.id}}"> {{ debt.concept }} </option>
+          </select>
+        </div>
+        <div *ngIf="form.get('debt').touched && form.get('debt').invalid" class="invalid-feedback">
+          <div>You must have select one</div>
+        </div>
+
+      </div>
+      <div class="card-footer">
+        <button [disabled]="!form.valid" type="submit" class="btn btn-primary">
+          Guardar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
