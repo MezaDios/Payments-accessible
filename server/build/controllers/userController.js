@@ -99,7 +99,8 @@ class UserController {
                 }
                 else {
                     req.body.users.forEach((user) => {
-                        if (!user === null) {
+                        console.log(user);
+                        if (!(user === null)) {
                             database_1.default.query('INSERT INTO debtDetails (id_debt, debtor) VALUES (?,?)', [rows.insertId, user], (err, rows, fields) => {
                                 if (err) {
                                     console.error(err);
