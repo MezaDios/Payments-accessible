@@ -11,7 +11,7 @@ export class GeneralStatsComponent implements OnInit {
 
   crud = this.parent.crud;
 
-  debtors: any = [];
+  debtors = [];
 
   totalDue = 0;
 
