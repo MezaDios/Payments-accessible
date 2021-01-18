@@ -72,4 +72,17 @@ export class UserViewComponent implements OnInit {
     });
   }
 
+  logOff() {
+    if (window.confirm('Are you sure you want to log out?')) {
+      this.crud.currentUser = {
+        id: 0,
+        name: '',
+        logged: false,
+        admin: false
+      };
+      localStorage.setItem('currentUser', JSON.stringify(this.crud.currentUser));
+      this.router.navigateByUrl('/login');
+    }
+  }
+
 }

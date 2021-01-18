@@ -14,8 +14,9 @@
                     <form [formGroup]="form" (ngSubmit)="form.valid && login()">
 
                         <div class="form-group">
-                            <input formControlName="telephone" type="tel" minlength="10" maxlength="10" name="telephone"
-                                placeholder="Phone Number" class="form-control" autofocus
+                            <label for="tel">Telephone: </label> <br>
+                            <input id="tel" formControlName="telephone" type="tel" minlength="10" maxlength="10"
+                                name="telephone" placeholder="Phone Number" class="form-control" autofocus
                                 [ngClass]="{'is-invalid':form.get('telephone').touched && form.get('telephone').invalid}"
                                 required />
                         </div>
@@ -24,8 +25,9 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="password" formControlName="password" placeholder="Password"
-                                class="form-control"
+                            <label for="pass">Password: </label> <br>
+                            <input id="pass" type="password" formControlName="password"
+                                placeholder="Password of your account" class="form-control"
                                 [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}"
                                 required />
                         </div>

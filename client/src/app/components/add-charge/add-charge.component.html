@@ -9,7 +9,9 @@
       <div class="card-body">
 
         <div class="form-group">
-          <input type="text" formControlName="concept" class="form-control" placeholder="Concept"
+          <label for="concept">Concept: </label> <br>
+          <input id="concept" type="text" formControlName="concept" class="form-control"
+            placeholder="Concept of the charge. e.g. Coppel Credit"
             [ngClass]="{'is-invalid':form.get('concept').touched && form.get('concept').invalid}" required />
         </div>
         <div class="invalid-feedback">
@@ -17,7 +19,9 @@
         </div>
 
         <div class="form-group">
-          <input type="number" formControlName="amount" class="form-control" placeholder="$ Amount"
+          <label for="amount">Amount: </label> <br>
+          <input id="amount" type="number" formControlName="amount" class="form-control"
+            placeholder="$ Amount (Don't use the $). e.g. 12312.00"
             [ngClass]="{'is-invalid':form.get('amount').touched && form.get('amount').invalid}" required />
         </div>
         <div class="invalid-feedback">

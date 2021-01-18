@@ -9,16 +9,33 @@ import { CurrentUser } from '../models/currentUser';
 
 export class CrudService {
 
+  /*
   currentUser: CurrentUser = {
-    id: 0,
-    admin: false,
-    logged: false,
-    name: ''
-  };
+   id: 0,
+   admin: false,
+   logged: false,
+   name: ''
+ };
+ */
+  temp = localStorage.getItem('currentUser');
+  currentUser: CurrentUser;
+
 
   API_URI = 'http://localhost:3000/api/users'; // DIRECCION DEL SERVIDOR
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    if (this.temp === undefined || this.temp === null) {
+      this.currentUser = {
+        id: 0,
+        admin: false,
+        logged: false,
+        name: ''
+      };
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    } else {
+      this.currentUser = JSON.parse(this.temp);
+    }
+  }
 
   getlogin(user) {
     return this.http.post(`${this.API_URI}/login/`, user); // DIRECCION DE USUARIOS}

@@ -24,8 +24,15 @@ export class LoginComponent implements OnInit {
     private parent: AppComponent) { }
 
   ngOnInit() {
-
+    if (this.crud.currentUser.logged === true) {
+      if (this.crud.currentUser.admin === true) {
+        this.router.navigateByUrl('/admin');
+      } else {
+        this.router.navigateByUrl('/user');
+      }
+    }
   }
+
   login() {
 
     const data = {
@@ -40,6 +47,7 @@ export class LoginComponent implements OnInit {
         if (this.crud.currentUser.logged === false) {
           alert('Usuario o contraseña incorrectos!!!');
         } else {
+          localStorage.setItem('currentUser', JSON.stringify(this.crud.currentUser));
           if (this.crud.currentUser.admin === true) {
             this.form.reset();
             this.router.navigateByUrl('/admin');

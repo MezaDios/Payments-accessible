@@ -46,10 +46,10 @@ export class ConsultsComponent implements OnInit {
     }
 
     this.form.get('type').valueChanges.subscribe(() => {
-      if (this.form.get('type').value === 1) {
+      if (this.form.get('type').value == 1) {
         this.user = true;
         this.date = false;
-      } else if (this.form.get('type').value === 2) {
+      } else if (this.form.get('type').value == 2) {
         this.user = false;
         this.date = true;
       }

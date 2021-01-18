@@ -96,7 +96,7 @@ class UserController {
                 }
                 else {
                     req.body.users.forEach((user: any) => {
-                        if (!user === null) {
+                        if (!(user === null)) {
                             pool.query('INSERT INTO debtDetails (id_debt, debtor) VALUES (?,?)',
                                 [rows.insertId, user], (err, rows, fields) => {
                                     if (err) {
