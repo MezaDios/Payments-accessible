@@ -17,7 +17,9 @@ export class UserViewComponent implements OnInit {
   payments;
   debts;
 
-  constructor(private parent: AppComponent, private router: Router) { }
+  constructor(private parent: AppComponent, private router: Router) {
+    this.totalDue = 0;
+  }
 
   ngOnInit() {
     console.log(this.crud.currentUser);

@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
         name: '',
         logged: false,
         admin: false
-      }
+      };
       this.router.navigateByUrl('/login');
     }
   }

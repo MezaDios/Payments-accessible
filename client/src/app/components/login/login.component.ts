@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     const data = {
       telephone: this.form.get('telephone').value,
       password: this.form.get('password').value
-    }
+    };
 
     this.crud.getlogin(data).subscribe(
       res => {

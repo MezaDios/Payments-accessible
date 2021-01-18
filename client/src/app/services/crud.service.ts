@@ -20,7 +20,7 @@ export class CrudService {
 
   constructor(private http: HttpClient) { }
 
-  getlogin(user): Observable<any> {
+  getlogin(user) {
     return this.http.post(`${this.API_URI}/login/`, user); // DIRECCION DE USUARIOS}
   }
 
