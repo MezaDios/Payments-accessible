@@ -96,7 +96,11 @@ class UserController {
                 }
                 else {
                     req.body.users.forEach((user: any) => {
+<<<<<<< HEAD
                         if (!(user === null)) {
+=======
+                        if (!user === null) {
+>>>>>>> parent of 510780c... resueltos algunos problemas de compatibilidad con versiones recientes de paquetes.
                             pool.query('INSERT INTO debtDetails (id_debt, debtor) VALUES (?,?)',
                                 [rows.insertId, user], (err, rows, fields) => {
                                     if (err) {

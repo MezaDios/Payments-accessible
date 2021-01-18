@@ -1,6 +1,6 @@
-CREATE OR REPLACE DATABASE ng_Control;
+CREATE OR REPLACE DATABASE ng_control;
 
-USE ng_Control;
+USE ng_control;
 
 CREATE OR REPLACE TABLE users
 (
