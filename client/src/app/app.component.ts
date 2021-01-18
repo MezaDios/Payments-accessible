@@ -7,5 +7,8 @@ import { CrudService } from './services/crud.service';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  constructor(public crud: CrudService) { }
+  title: any;
+  constructor(public crud: CrudService) {
+    this.title = "client";
+  }
 }
